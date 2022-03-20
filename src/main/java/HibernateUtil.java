@@ -16,7 +16,7 @@ public class HibernateUtil {
                 Configuration configuration = new Configuration();
                 Properties properties = new Properties();
                 properties.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-                properties.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate?serverTimezone=UTC");
+                properties.put(Environment.URL, "jdbc:mysql://localhost:3306/practical_project?serverTimezone=UTC");
                 properties.put(Environment.USER, "root");
                 properties.put(Environment.PASS, "ealeksa121");
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
@@ -26,9 +26,9 @@ public class HibernateUtil {
 
                 configuration.setProperties(properties);
 
-//                configuration.addAnnotatedClass(Owner.class);
-//                configuration.addAnnotatedClass(Book.class);
-//                configuration.addAnnotatedClass(Library.class);
+                configuration.addAnnotatedClass(Employee.class);
+                configuration.addAnnotatedClass(Department.class);
+                configuration.addAnnotatedClass(PickedRows.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

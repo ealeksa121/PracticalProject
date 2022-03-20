@@ -21,8 +21,8 @@ public class Employee {
     private String fullName;
     private Long employeeNo;
 
-    @ManyToMany(mappedBy = "employees")
-    private Set<Department> departments;
+    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "employee")
+    private List<Department> departments;
 
 
 }

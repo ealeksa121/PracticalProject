@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,9 +20,12 @@ public class Department {
 
     private String departmentName;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "employees_departments")
-    private Set<Employee> employees;
+    @ManyToOne
+    @JoinColumn(name = "employeeId")
+    private Employee employee;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "department")
+    private List<PickedRows> pickedRowsList;
 
 
 
